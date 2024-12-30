@@ -25,7 +25,7 @@ A Python library for image enhancement using CLAHE (Contrast Limited Adaptive Hi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/enhanced-image-processor.git
+git clone https://github.com/MichailSemoglou/enhanced-image-processor.git
 cd enhanced-image-processor
 ```
 
