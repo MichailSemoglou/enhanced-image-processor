@@ -36,26 +36,27 @@ pip install opencv-python numpy tqdm
 
 ## Usage
 
-### Basic Usage
+### Basic Usage with Auto-Optimization
 
 ```python
 from image_processor import ImageProcessor
 
-# Create processor instance
-processor = ImageProcessor()
-
-# Process single image
-processor.enhance_image("input.jpg")
-```
-
-### With Automatic Parameter Optimization
-
-```python
 # Create processor with auto-optimization
 processor = ImageProcessor(auto_optimize=True)
 
-# Process image with optimized parameters
-processor.enhance_image("input.jpg")
+# Process and save image with optimized parameters
+enhanced_image = processor.enhance_image("input.jpg")
+if enhanced_image is not None:
+    processor.save_image(enhanced_image, "enhanced_input.jpg")
+```
+
+### Custom Output Directory
+
+```python
+# Process and save image in a specific directory
+enhanced_image = processor.enhance_image("input.jpg")
+if enhanced_image is not None:
+    processor.save_image(enhanced_image, "output_folder/enhanced_input.jpg")
 ```
 
 ### Batch Processing
@@ -84,6 +85,11 @@ processor = ImageProcessor(
     color_space='HSV',
     normalize_output=True
 )
+
+# Process and save image
+enhanced_image = processor.enhance_image("input.jpg")
+if enhanced_image is not None:
+    processor.save_image(enhanced_image, "enhanced_hsv_input.jpg")
 ```
 
 ## Parameters
@@ -93,6 +99,12 @@ processor = ImageProcessor(
 - `color_space` (str, default='LAB'): Color space for enhancement
 - `normalize_output` (bool, default=True): Whether to normalize output values
 - `auto_optimize` (bool, default=False): Enable automatic parameter optimization
+
+## Save Image Parameters
+
+- `image` (np.ndarray): The enhanced image to save
+- `output_path` (str or Path): Where to save the image
+- `create_dirs` (bool, default=True): Automatically create output directories if they don't exist
 
 ## Requirements
 
