@@ -75,6 +75,26 @@ for filename, status in results:
     print(f"{filename}: {status}")
 ```
 
+### Milder Enhancement
+
+```python
+# Create processor with reduced clip limit for milder enhancement
+processor = ImageProcessor(
+    clip_limit=1.0,  # Lower clip limit (default is 2.0)
+    tile_size=16,    # Larger tile size (default is 8)
+    normalize_output=True
+)
+
+# Process and save image
+enhanced_image = processor.enhance_image("input.jpg")
+if enhanced_image is not None:
+    processor.save_image(enhanced_image, "mild_enhanced_input.jpg")
+```
+
+The enhancement intensity can be adjusted through two main parameters:
+- Decrease `clip_limit` (try values between 0.5 and 1.5 for milder effects)
+- Increase `tile_size` (try 12 or 16 for more gradual transitions)
+
 ### Custom Color Space
 
 ```python
